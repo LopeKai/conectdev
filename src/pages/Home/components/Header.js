@@ -10,8 +10,8 @@ function Header() {
 
                 <div className="">
                     <button>Novo Post</button>
-                    <span>Img1</span>
-                    <span>Img2</span>
+                    <span>Imag1</span>
+                    <span>Imag2</span>
                 </div>
             </div>
         </header>
