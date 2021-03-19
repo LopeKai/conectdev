@@ -1,21 +1,42 @@
 import React from 'react' // eu importo o react quando eu vou usar tag HTML
-import './style.css'
+// import './style.css'
+import { makeStyles } from '@material-ui/core/styles'
 
 import Header from './components/Header'
+import Navbar from './components/Navbar'
+import Feed from './components/Feed'
+import Container  from '@material-ui/core/Container'
+import Box  from '@material-ui/core/Box'
 
+const useStyles = makeStyles({
+    root: {
+        display: 'flex',
+        flexDirection: 'column',
+    },
+    main: {
+        height: '100vh',
+        padding: 24,
+        border: '1px solid blue',
+    },
+    toolbar: {
+        minHeight: 64,
+    }
+
+})
 
 function Home() {
+   const classes = useStyles()
     return(
-        <div>
+        <div className={classes.root} >
             <Header/>
-            <main className="main">
-                <div className="navbar">
-                    navbar
-                </div>
-
-                <div className="feed">
-                    feed
-                </div>
+            <div className={classes.toolbar}></div>
+            <main className={classes.main}>
+                <Container maxWidth="lg">
+                    <Box display="flex">
+                        <Navbar/>
+                        <Feed />
+                    </Box>
+                </Container>
             </main>
         </div>
     )
