@@ -16,12 +16,10 @@ const useStyles = makeStyles({
     main: {
         height: '100vh',
         padding: 24,
-        border: '1px solid blue',
     },
     toolbar: {
         minHeight: 64,
     }
-
 })
 
 function Home() {

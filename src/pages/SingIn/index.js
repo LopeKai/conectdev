@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
@@ -8,9 +9,12 @@ import LockIcon from '@material-ui/icons/Lock';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
+import FormHelperText from '@material-ui/core/FormHelperText';
+
+import authService from '../../services/authService'
+
 
 const useStyles = makeStyles((theme) => ({
-  
     root: {
         height: '100vh',
     },
@@ -31,7 +35,6 @@ const useStyles = makeStyles((theme) => ({
     form: {
         margin: theme.spacing(0,4,1,4),
     }
-   
 }))
 
 function Copyright() {
@@ -48,6 +51,25 @@ function Copyright() {
 
 function SignIn() {
     const classes = useStyles()
+    const navigate = useNavigate()
+    const [email,setEmail] = useState('')
+    const [password,setPassword] = useState('')
+    const [erroMessage, setErroMessage] = useState()
+
+     async function handleSignIn() { // Regra de Negócio
+        // chamada a api da nossa aplicação
+        // se retorna ok, direcione para home
+        // senao exiber mensagem para o usuario
+        try {
+            await authService.signIn(email, password)
+            //200
+            navigate('/')
+        } catch(error) {
+            setErroMessage(error.response.data.message)
+        }
+
+    }
+
     return(
         <Grid container className={classes.root}>
             <Grid 
@@ -60,12 +82,6 @@ function SignIn() {
                 md={5}
                 className={classes.image}
                 >
-                {/* <Typography style={{color: '#fff', fontSize: '2rem', lineHeight: '30px', textAlign: 'center'}}>
-                    <strong> Simplificando a forma de conectar DESENVOLVEVORES de software </strong>
-                </Typography>
-                <Typography style={{color: 'rgb(255,255,225,0.7)',marginTop: 20}}>
-                    Compatilhe seu conhecimento com toda nossa rede de desenvoledores de software
-                </Typography> */}
             </Grid>
 
             <Grid item sm={5} md={5}> 
@@ -87,6 +103,8 @@ function SignIn() {
                             name="email"
                             autoComplete="email"
                             autoFocus  
+                            value={email}
+                            onChange={(event) => setEmail(event.target.value)}
                         />
                         <TextField 
                             variant="outlined"
@@ -98,15 +116,24 @@ function SignIn() {
                             type="password"
                             id="password"
                             autoComplete="current-password"
+                            value={password}
+                            onChange={(event) => setPassword(event.target.value) }
                         />
                         <Button 
                             className={classes.button}
                             fullWidth
                             variant="contained"
                             color="primary"
+                            onClick={handleSignIn}
                         >
                             <span style={{color: '#fff', letterSpacing: '0.5px', fontWeight: '600',textShadow: '0 0px 5px rgba(0,0,0,70%)'}}> Entrar </span>
                         </Button>
+                        {
+                            erroMessage &&
+                                <FormHelperText error>
+                                     {erroMessage}
+                                </FormHelperText>
+                        }
                         <Grid container style={{marginTop: '0.5rem'}}>
                             <Grid item>
                                 <Link>Esqueceu sua senha?</Link>

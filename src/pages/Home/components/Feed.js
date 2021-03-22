@@ -13,9 +13,9 @@ const posts = [
       id: 1,
       author: {
           id: 1,
-          name: 'Lucas Nhimi',
-          usename: 'lucasnhimi',
-          avatar: '/images/avatars/avatar_1.jpeg'
+          name: 'Fernanda Souza',
+          usename: 'Fesouza',
+          avatar: ''
       },
       title: 'Criando um App do zero utilizando React-JS',
       data: 'Março 01/03/21',
@@ -27,9 +27,9 @@ const posts = [
     id: 2,
     author: {
         id: 1,
-        name: 'Lucas Nhimi',
-        usename: 'lucasnhimi',
-        avatar: '/images/avatars/avatar_1.jpeg'
+        name: 'Pedro Silva',
+        usename: 'SilvaPedro',
+        avatar: ''
     },
     title: 'Comparativo entre React-Js e Vue-JS- performance',
     data: 'Março 01/1/21',

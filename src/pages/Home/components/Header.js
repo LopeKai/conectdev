@@ -44,7 +44,7 @@ function Header() {
                     <SvgIcon className={classes.bell}>
                         <Bell></Bell>
                     </SvgIcon>
-                    <Avatar alt="Remy Sharp" src="https://avatars.githubusercontent.com/u/66790414?s=460&u=d63a23535b9cc021fd4e4abcfa6d15819a218cb3&v=4" />
+                    <Avatar alt="Remy Sharp" src="./images/avatars/avatar.jpg" />
                 </div>
                 {/* <div className="">
                     <a> Conecta Dev</a>

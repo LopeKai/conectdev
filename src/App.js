@@ -7,6 +7,8 @@ import theme from './theme'
 import Home from './pages/Home'
 import SignIn from './pages/SingIn'
 
+import './mock';
+
 function App() {
     return(
         <ThemeProvider theme={theme}>
@@ -17,6 +19,7 @@ function App() {
                     <Route path="*" element={<h1>Not found 404!</h1>} /> {/* caso entra em uma rota que nao existe eu vou imprimi esse h1 */}
                 </Routes>
             </BrowserRouter>
+
             {/* {
                 url === 'http://localhost:3000/' 
                 ? <Home /> 
